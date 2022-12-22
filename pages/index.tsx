@@ -7,33 +7,20 @@ export default function Home() {
   )
 }
 
-interface SuperHero {
-  powers: string[];
-  savesTheDay: () => void;
-}
-let dazzler: SuperHero = {
-  powers: ["transduces sonic vibrations into light"],
-  savesTheDay(){console.log(`Dazzer ${this.powers} to save the day!`)}
+function pushSomethingIntoCollection<T>(something: T, collection: T[]) {
+  collection.push(something);
+  console.log(collection);
 }
 
-interface BadGuy {
-  badDeeds: string[];
-  getRandomBadDeed: () => string;
-  commitBadDeed: () => void;
-}
-let badGuy: BadGuy = {
-  badDeeds: ["meh 1", "meh 2", "meh 3"],
-  getRandomBadDeed(){ return this.badDeeds[Math.floor(Math.random() * this.badDeeds.length)]},
-  commitBadDeed(){ console.log(`BadGuy ${this.getRandomBadDeed()}`)}
-}
+let jeanGrey = { name: "Jean Grey" };
+let wolverine = { name: "Wolverine" };
 
-function saveDayOrBadDeed(something: SuperHero | BadGuy) {
-  if ((something as SuperHero).powers) {
-    (something as SuperHero).savesTheDay()
-  } else {
-    (something as BadGuy).commitBadDeed()
-  }
-}
+let superHeroes = [jeanGrey];
+let powers = ["telekinesis", "esp"];
 
-saveDayOrBadDeed(dazzler);
-saveDayOrBadDeed(badGuy)
+interface SuperHero {name: string;}
+
+pushSomethingIntoCollection<SuperHero>("meh", superHeroes);
+pushSomethingIntoCollection<string>("adamantium claws", powers);
+// pushSomethingIntoCollection("cool", superHeroes);
+// pushSomethingIntoCollection("adamantium claws", []);
