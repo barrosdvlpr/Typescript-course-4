@@ -7,33 +7,33 @@ export default function Home() {
   )
 }
 
-class ComicBookCharacter {
-  constructor(
-    public alias: string, public health: number , public strength: number,
-    // private secretIdentity: string
-    protected secretIdentity: string
-  ) {}
-  // getSecretId() {console.log(this.secretIdentity)}
+interface SuperHero {
+  powers: string[];
+  savesTheDay: () => void;
+}
+let dazzler: SuperHero = {
+  powers: ["transduces sonic vibrations into light"],
+  savesTheDay(){console.log(`Dazzer ${this.powers} to save the day!`)}
 }
 
-class SuperHero extends ComicBookCharacter {
-  traits = ["empathy", "strong moral code"]
-  getSecretId() {console.log(this.secretIdentity)}
+interface BadGuy {
+  badDeeds: string[];
+  getRandomBadDeed: () => string;
+  commitBadDeed: () => void;
 }
-class SuperVillain extends ComicBookCharacter {
-  flaws = ["hubris", "always explains evil plan"]
-  getSecretId() {console.log(this.secretIdentity)};
+let badGuy: BadGuy = {
+  badDeeds: ["meh 1", "meh 2", "meh 3"],
+  getRandomBadDeed(){ return this.badDeeds[Math.floor(Math.random() * this.badDeeds.length)]},
+  commitBadDeed(){ console.log(`BadGuy ${this.getRandomBadDeed()}`)}
+}
 
-  constructor(a, b, c, d){
-    super(a, b, c, d);
-    console.log(`${this.alias} eats kittens!`)
+function saveDayOrBadDeed(something: SuperHero | BadGuy) {
+  if ((something as SuperHero).powers) {
+    (something as SuperHero).savesTheDay()
+  } else {
+    (something as BadGuy).commitBadDeed()
   }
 }
 
-let jubilee = new SuperHero("Jubilee", 23, 233, "Jubilation Lee");
-let scarletWitch = new SuperVillain("Scarlet Witch", 233, 4444, "Wanda Maximoff");
-
-console.log(jubilee)
-console.log(scarletWitch)
-console.log(jubilee.getSecretId())
-console.log(scarletWitch.getSecretId())
+saveDayOrBadDeed(dazzler);
+saveDayOrBadDeed(badGuy)
