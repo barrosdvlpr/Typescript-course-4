@@ -7,14 +7,16 @@ export default function Home() {
   )
 }
 
-let someString: string = "cool";
+let userName: string = "Silver Surfer";
+// userName = ["Silver", "Surfer"];
 
-// someString = 243233;
+// let userId = (a: string, b:number): string => a + b;
+// let userId = (a: string, b:number) => a + b;
+// let userId = (a: string, b:number): number => a + b;
+let userId = (a: string, b:number) => a + b;
 
-let coolFunc = (a: string, b: number) => a + b;
+// let target: HTMLElement = document.getElementById("target");
+// target.onclick = (event: MouseEvent) => event.button;
 
-coolFunc(
-  someString, 
-  1212,
-  // {}
-  )
+let target: HTMLElement = document.getElementById("target");
+target.onclick = (event: HTMLButtonElement) => event.button;  
