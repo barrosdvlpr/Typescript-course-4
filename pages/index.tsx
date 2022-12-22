@@ -7,80 +7,33 @@ export default function Home() {
   )
 }
 
-// class ComicBookCharacter {
-//   alias: string;
-//   health: number;
-//   strength: number;
-//   secretIdentity: string;
-
-//   attackFunc(opponent, attackWith: number) {
-//     opponent.health -= attackWith;
-//     console.log(`${this.alias} attacked ${opponent.alias} who's health = ${opponent.health}`);
-//   }
-// }
-
-interface Opponent {
-  alias: string;
-  health: number;
-}
 class ComicBookCharacter {
-  // alias: string;
-  // health: number;
-  // strength: number;
-  // private secretIdentity: string;
-
-  private team: {
-    name: string;
-    membres: ComicBookCharacter[]
-  }
-
-  attackFunc(opponent: Opponent, attackWith: number) {
-    opponent.health -= attackWith;
-    console.log(`${this.alias} attacked ${opponent.alias} who's health = ${opponent.health}`);
-  }
-  getSecretIdentity() {console.log(`${this.alias}'s secret identity is ${this.secretIdentity}`);}
-
-  // constructor(alias: string, health: number, strength: number, secretIdentity: string) {
-  //   this.alias = alias;
-  //   this.health = health;
-  //   this.strength = strength;
-  //   this.secretIdentity = secretIdentity;
-  // }
-
   constructor(
-    public alias: string, public health: number, public strength: number, public secretIdentity: string) {
-  }
-  static createAndAssignTeam(teamName: string, members: ComicBookCharacter[]) {
-    let team = {
-      name: teamName,
-      members: members
-    }
-    members.forEach((member) => {
-      member.team = team;
-    })
-  }
-  getTeamname(){console.log`${this.alias} is on Team ${this.team.name}`}
+    public alias: string, public health: number , public strength: number,
+    // private secretIdentity: string
+    protected secretIdentity: string
+  ) {}
+  // getSecretId() {console.log(this.secretIdentity)}
 }
 
-// let storm = new ComicBookCharacter();
-// storm.alias = "Storm";
-// storm.health = 100;
-// storm.strength = 100;
-// storm.secretIdentity = "Ororo Munroe";
+class SuperHero extends ComicBookCharacter {
+  traits = ["empathy", "strong moral code"]
+  getSecretId() {console.log(this.secretIdentity)}
+}
+class SuperVillain extends ComicBookCharacter {
+  flaws = ["hubris", "always explains evil plan"]
+  getSecretId() {console.log(this.secretIdentity)};
 
-// let theBlob = new ComicBookCharacter();
-// theBlob.alias = "The Blob";
-// theBlob.health = 1000;
-// theBlob.strength = 5000;
-// theBlob.secretIdentity = "Fred J. Dukes";
+  constructor(a, b, c, d){
+    super(a, b, c, d);
+    console.log(`${this.alias} eats kittens!`)
+  }
+}
 
-let storm = new ComicBookCharacter("Storm", 100, 100, "Ororo Munroe");
-let theBlob = new ComicBookCharacter("The Blob", 1000, 5000, "fred J. Dukes");
+let jubilee = new SuperHero("Jubilee", 23, 233, "Jubilation Lee");
+let scarletWitch = new SuperVillain("Scarlet Witch", 233, 4444, "Wanda Maximoff");
 
-storm.attackFunc(theBlob, storm.strength);
-// getSecretIdentity()
-// let team = ComicBookCharacter.createAndAssignTeam("oddCouple", [storm, theBlob]);
-// console.log(team) 
-
-ComicBookCharacter.createAndAssignTeam("oddCouple", [storm, theBlob]);
-theBlob.getTeamname()
+console.log(jubilee)
+console.log(scarletWitch)
+console.log(jubilee.getSecretId())
+console.log(scarletWitch.getSecretId())
