@@ -7,58 +7,19 @@ export default function Home() {
   )
 }
 
-// const thing: string | number;
+let unit: string = "awesome";
+// let miles: "MILES" = "MILES"; 
+let miles: "MILES" = "MILtS"; 
 
-// const thing: string | number | string[] | boolean;
-// const returnSomething = (someThing: string | number | string[] | boolean) => {
-//   return someThing;
+// function moveCharacter(distance: number, value: string) {
+//   console.log(`You moved ${distance} ${value}`);
 // };
+// // moveCharacter(3, "feet");
+// moveCharacter(4, "dragon");
 
-// type thing = string | number | string[] | boolean;
-// const returnSomeThing = (someThing: thing) => someThing;
-// console.log(returnSomeThing("coolGuy"));
-
-// type thing = string | number | string[] | boolean;
-// const returnSomeThing = (someThing: thing) => {
-//   if (typeof someThing === "string" || typeof someThing === "number" || typeof someThing === "boolean") {
-//     console.log("someThing", someThing);
-//   }
-//   if (someThing instanceof Array) {
-//     const joinedThings = "";
-//     someThing.forEach(thing => {
-//       joinedThings += `${thing}`;
-//     })
-//     console.log("joinedThings", joinedThings);
-//   }
-// }
-// // returnSomeThing(2323)
-// returnSomeThing(["Wonder", "Woman", "Rocks!!!!"])
-
-type thing = string | number | string[] | boolean;
-const returnSomeThing = (someThing: thing) => {
-  if (someThing instanceof Array) {
-    const joinedThings = "";
-    someThing.forEach(thing => {
-      joinedThings += `${thing}`;
-    })
-    console.log("joinedThings", joinedThings);
-  } else {console.log("something =", someThing);}
-}
-returnSomeThing(false)
-
-type stuff = string | {name:string};
-const gimmeStuff = (stuff: stuff) => {
-  typeof stuff === "string";
-  typeof stuff.name === "string";   
+type distanceMetric = "MILES" | "KILOMETERS" | "METERS" | "YARDS" | "FEET" | "INCHES";
+function moveCharacter(distance: number, value: distanceMetric) {
+  console.log(`You moved ${distance} ${value}`);
 };
+// moveCharacter(4, "dragon");
 
-type coolThings = {name: string;} | {id: number;};
-const gimmeCoolthings = (thing: coolThings) => {
-  if (typeof thing.name === "string") { return thing.name; }
-  if (typeof thing.id === "number") { return thing.id; }
-};  
-
-type stuffAndThings = {cool: string; meh: string;} | {cool: string; lame: string; }
-const gimmeStuffAndThings = (sat: stuffandThings) => {
-  return sat.cool || sat.lame;
-};
